@@ -1,0 +1,26 @@
+// ==========================================================================
+// VARS
+// ==========================================================================
+
+//
+// Grid params
+// ==========================================================================
+
+$columns: 12 !global;
+$gutter: 15px !global;
+$gridWidth: 1218px;
+
+//
+// Typography
+// ==========================================================================
+
+$rootElementValue: 16px !global;
+$lineHeight: 1.333 !global;
+
+//
+// Other
+// ==========================================================================
+
+$imgFolderPath: '/static/img/home/'; // Path to images
+$fontsFolderPath: '/static/fonts/'; // Path to fonts
+$animDuration: 0.2s; // duration of transitions

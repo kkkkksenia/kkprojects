@@ -1,0 +1,88 @@
+//main colors
+$yellow: #FFD312;
+$lightYellow: rgba(255, 211, 18, 0.3);
+$blue: #0a50dc;
+$lightBlue: #375694;
+$darkBlue: #1A2375;
+$white: #fff;
+$lightWhite: #F9F9F9;
+$lightGray: #DFDFDF;
+$gray: #999eb9;
+$dark: #222431;
+$choco: #60400A;
+$grayBackground: rgba(223, 223, 223, 0.3);
+$sR: 8px;
+$bR: 12px;
+
+//styles
+$blueGradient: linear-gradient(to right, $darkBlue, $blue);
+$borderBottom: 1px solid $lightGray;
+$mainBackground: url("/static/img/home/hero_bg.jpg");
+$houseBackground: url("/static/img/home/forest.jpg");
+$checkIcon: url("/static/img/home/check_mark.svg");
+
+//fonts
+@font-face {
+  font-family: "Montserrat Extra-Bold";
+  src: url("/static/fonts/montserrat-extrabold.woff2") format("woff2"),
+       url("/static/fonts/montserrat-extrabold.woff") format("woff"),
+       url("/static/fonts/montserrat-extrabold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/static/fonts/montserrat-regular.woff2") format("woff2"),
+       url("/static/fonts/montserrat-regular.woff") format("woff"),
+       url("/static/fonts/montserrat-regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("/static/fonts/opensans-regular.woff2") format("woff2"),
+       url("/static/fonts/opensans-regular.woff") format("woff"),
+       url("/static/fonts/opensans-regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url("/static/fonts/opensans-bold.woff2") format("woff2"),
+       url("/static/fonts/opensans-bold.woff") format("woff"),
+       url("/static/fonts/opensans-bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans Italic";
+  src: url("/static/fonts/opensans-italic.woff2") format("woff2"),
+       url("/static/fonts/opensans-italic.woff") format("woff"),
+       url("/static/fonts/opensans-Italic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  src: url("/static/fonts/opensans-light.woff2") format("woff2"),
+  url("/static/fonts/opensans-light.woff") format("woff"),
+  url("/static/fonts/opensans-light.ttf") format("truetype");
+  font-display: swap;
+}
+
+//@font-face {
+//  font-family: "InstaFont";
+//  src: url("/static/fonts/Instafix/font/instafix.woff2") format("woff2"),
+//       url("/static/fonts/Instafix/font/instafix.woff") format("woff"),
+//       url("/static/fonts/Instafix/font/instafix.ttf") format("truetype");
+//}
+
+//fonts sizes
+$mainFontSize: 16px;
+$mainFontWeight: 400;
+$h1FontSize: 3.5rem;
+$h1FontWeight: 800;
+$h2FontSize: 2.25rem;
+$h34FontSize: 1.25rem;
+$phoneFontSize: 1.125rem;
+$iconFontSize: 2rem;
+
+//buttons
+$btnHover: rgba(55, 86, 148, 0.2);
+$btnBlueHober: rgba(34, 36, 49, 0.15);
