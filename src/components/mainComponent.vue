@@ -1,48 +1,24 @@
 <template>
     <div class="wrapper">
         <div class="blocks">
-            <div :class="block.name" :key="key"
-                 class="block"
-                 v-for="(block, key) in blocks">
-                <button class="btn btn--default" @click="selectBlock(key)">
-                    Настройки
-                </button>
-                <textarea v-model="block.text"></textarea>
-            </div>
-
-            <div class="settings" v-if="settingsShow">
-                <div class="settings--title">
-                    <span class="name">Настройки</span>
-                    <button class="btn btn--default" @click="saveSettings">
-                        Сохранить
-                    </button>
-                    <span class="settings--close" @click="settingsShow = false">x</span>
-                </div>
-                <div class="settings--data">
-                    <div class="settings--item" v-for="(setting, index) in blocks[selected].settings" :key="index">
-                        <label :for="'value' + setting.id"> {{ setting.name }} </label>
-                        <input type="text" v-if="setting.fieldType === 'input'" v-model="setting.value" :maxlength="setting.size" :id="'value' + setting.id">
-                        <select v-model="setting.value" v-else-if="setting.fieldType === 'select'">
-                            <option v-for="(option, key) in setting.options" v-bind:value="option.value" :key="key">
-                                {{ option.text }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            <block-component v-for="(block, key) in blocks" :key="key" :blockData="block" :execute-callback="selectBlock"></block-component>
         </div>
+        <settings-component :settingsData="selectedBlock.settings" :execute-callback="saveSettings" :close-callback="closeSettings" v-if="settingsShow"></settings-component>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-
+import SettingsComponent from './settingsComponent'
+import BlockComponent from './blockComponent'
 export default {
-  name: 'main',
+  name: 'mainComponent',
   props: {
     msg: String
   },
   components: {
+    BlockComponent,
+    SettingsComponent,
     axios
   },
   data () {
@@ -84,22 +60,28 @@ export default {
                 {'text': 'Да', 'value': 1},
                 {'text': 'Нет', 'value': 2}
               ],
-              'value': 1
+              'value': 'Да'
             }
           ]
         }
       ],
-      selected: 0,
+      selected: 1,
       settingsShow: false,
       editText: false
     }
   },
+  computed: {
+    selectedBlock () {
+      return this.blocks.find(item => item.id === this.selected)
+    }
+  },
   methods: {
-    selectBlock (key) {
-      this.selected = key
-      this.settingsShow = !this.settingsShow
+    selectBlock (id) {
+      if (id === this.selected || !this.settingsShow) { this.settingsShow = !this.settingsShow }
+      this.selected = id
     },
-    saveSettings () {
+    saveSettings (settings) {
+      this.selectedBlock.settings = settings
       axios.post('/api/save', JSON.stringify(this.blocks))
         .then(res => {
           setTimeout(() => {
@@ -109,6 +91,9 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+    closeSettings () {
+      this.settingsShow = false
     }
   }
 }

@@ -44,7 +44,6 @@
 
 .settings {
   height: 100%;
-  width: 300px;
   position: fixed;
   top: 0;
   left: 0;
@@ -52,6 +51,16 @@
   padding: rem(20px);
   box-shadow: 0 5px 15px 0 dye(boxShadow);
   color: dye(blue);
+
+  @include respond-to(phone) {
+    width: 100%;
+  }
+  @include respond-to(tablets) {
+    width: 300px;
+  }
+  @include respond-to(desktop) {
+    width: 300px;
+  }
 
   &--title {
     @include flex(row, nowrap);
