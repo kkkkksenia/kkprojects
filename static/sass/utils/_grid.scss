@@ -1,0 +1,59 @@
+// ==========================================================================
+// GRID
+// ==========================================================================
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+        @media screen and (min-width: #{map-get($map: $breakpoints, $key: $breakpoint)}) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from '#{$breakpoint}'" + "Please make sure it is defined in '$breakpoints' map";
+    }
+
+}
+
+@mixin container {
+    max-width: $gridWidth;
+    margin: 0 auto;
+    position: relative;
+    @include respond-to(phone) {
+      width: 100%;
+    }
+    @include respond-to(desktop) {
+      width: 64%;
+    }
+}
+
+@mixin container-fluid {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+@mixin row {
+    width: 100%;
+}
+
+@mixin row-flex {
+    @include row;
+    @include flex(row, wrap);
+    justify-content: space-around;
+}
+
+@mixin col {
+    padding: 0 $gutter;
+}
+
+@mixin cols($media, $value) {
+    @include respond-to($media) {
+        flex-basis: 100% / $columns * $value;
+    }
+}
+
+@mixin col-offset($media, $value) {
+    @include respond-to($media) {
+        margin-left: 100% / $columns * $value;
+    }
+}

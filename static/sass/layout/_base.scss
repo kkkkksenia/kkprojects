@@ -1,0 +1,76 @@
+
+$sR: rem(8px);
+$bR: rem(12px);
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#app {
+    height: 100%;
+}
+
+.btn {
+    padding: rem(10px) rem(15px);
+    border-radius: 4px;
+
+    &--default {
+        background-color: dye(white);
+        border: 1px solid dye(gray);
+        @include transition;
+        &:hover {
+            background-color: dye(gray);
+        }
+        &:active {
+            outline: none!important;
+            background-color: dye(gray);
+        }
+    }
+}
+
+input[type=text], select {
+    height: 45px;
+    width: 100px;
+    padding: rem(5px);
+
+    &:active, &:focus {
+        border: 1px solid dye(blue);
+    }
+}
+
+select {
+    width: 100%;
+    height: 35px;
+    background-color: dye(white);
+    color: dye(blue);
+}
+
+textarea {
+    width: 100%;
+    height: 50%;
+    border: none;
+    text-align: center;
+    font-family: 'Arial';
+    font-size: 16px;
+    line-height: 24px;
+    resize: none;
+
+    &:focus, &:active {
+        outline: none;
+    }
+
+    &:disabled {
+        color: dye(black);
+    }
+}

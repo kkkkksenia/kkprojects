@@ -1,0 +1,12 @@
+@function dye($key: $key) {
+    @return map-get($colors, $key);
+  }
+
+@function rem($size) {
+    $remSize: $size / $rootElementValue;
+    @return #{$remSize}rem;
+  }
+
+@function bpoint($key: $key) {
+@return map-get($breakpoints, $key);
+}
